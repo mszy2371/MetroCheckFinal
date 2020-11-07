@@ -1,0 +1,119 @@
+/*
+ * Globals
+ */
+
+
+/* Custom default button */
+#button {
+  background-color: tomato;
+  border-radius: 4px;
+  color: black;
+  padding: 1em 2em;
+  border: .05rem solid black;
+  text-decoration: none;
+}
+
+a:hover#button  {
+  background-color: blue;
+}
+
+a:active#button  {
+  background-color: black;
+}
+
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+    text-align: center;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 20rem rgba(0, 0, 0, 1);
+}
+
+#main-page {
+  box-shadow: inset 0 0 0rem rgba(0, 0, 0, 0);
+  text-align: center;
+  background-image: url('bigben.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  height:100%;
+  width:100%;
+}
+
+#main-text {
+    margin-top: 20%;
+     margin-left:2%;
+    margin-right:2%;
+    color:black;
+    font-weight: bold;
+    font-size: 20px;
+    }
+
+#remainder {
+    font-size: 14px;
+    font-weight: normal;}
+
+.subpage {
+    text-align: center;
+
+}
+div.subpage a {
+  background-color: grey;
+  color: white;
+  padding: .1em 1.5em;
+  text-decoration: none;
+  border: .05rem solid black;
+}
+div.subpage a:hover {
+  background-color: #555;
+}
+
+div.subpage a:active {
+  background-color: black;
+}
+div.subpage ul{
+    list-style: none;
+}
+
+#code-t-head {
+    background-color: green;
+}
+
+#code-hol-head {
+    background-color: orange;
+}
+
+#code-duty-head {
+    background-color: brown;
+}
+
+#code-rota-head {
+    background-color: blue;
+}
+
+
+ * Header
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+  position: absolute;
+  width: 100%;
+  bottom: 0%;
+}

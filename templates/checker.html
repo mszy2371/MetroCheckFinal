@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="subpage">
+        <form method="GET" action="">
+            <fieldset>
+                <div class="container-fluid">
+                    <h1 class="card-header">DUTY CHECKER:</h1>
+                    <h6>Please pick the date(default:today)</h6>
+                    <input name="checkerdate" type="date">
+                    <input type="submit" value="Go to date">
+                    <p style="color:orange;text-shadow:1px 1px black;font-size:20px;">
+                        <b>DATE: {{ checkerdate }}  falls on {{ weekday }}</b></p>
+                </div>
+                <table class="table table-bordered table-dark">
+                    <tr style="background-color:tomato;">
+                        <th>NAME</th>
+                        <th>DUTY NO:</th>
+                        <th>DUTY SPELL:</th>
+                        <th>ROUTE NO:</th>
+                    </tr>
+                        {% for driver in drivers %}
+                    <tr>
+                        <td>{{ driver.first }}</td>
+                        {% if (driver.clnd(checkerdate).label) == 0 %}
+                        <td>{{ 'REST' }}</td>
+                        {% elif (driver.clnd(checkerdate).label) == 1 %}
+                        <td>{{ '* (star duty)' }}</td>
+                        {% else %}
+                        <td>{{ driver.clnd(checkerdate).label }}</td>
+                        {% endif %}
+                        {% if weekday == 'Monday' or weekday == 'Tuesday'
+                        or weekday == 'Wednesday' or weekday == 'Thursday' %}
+                        <td>{{ mon_thu_times[(driver.clnd(checkerdate).label)] }}</td>
+                        {% elif weekday == 'Friday' %}
+                        <td>{{ fri_times[(driver.clnd(checkerdate).label)] }}</td>
+                        {% elif weekday == 'Saturday' %}
+                        <td>{{ sat_times[(driver.clnd(checkerdate).label)] }}</td>
+                        {% elif weekday == 'Sunday' %}
+                        <td>{{ sun_times[(driver.clnd(checkerdate).label)] }}</td>
+                        {% endif %}
+                        {% if (driver.clnd(checkerdate).label) in duty_routes[0] %}
+                        <td>{{ 'N20' }}</td>
+                        {% elif (driver.clnd(checkerdate).label) in duty_routes[1] %}
+                        <td>{{ 'N91' }}</td>
+                        {% elif (driver.clnd(checkerdate).label) in duty_routes[2] %}
+                        <td>{{ 'N134' }}</td>
+                        {% elif (driver.clnd(checkerdate).label) in duty_routes[3] %}
+                        <td>{{ 'N307' }}</td>
+                        {% elif (driver.clnd(checkerdate).label) == 1 %}
+                        <td>{{ 'To be found' }}</td>
+                        {% else %}
+                        <td>{{ '' }}</td>
+                        {% endif %}
+                    </tr>
+                        {% endfor %}
+                </table>
+            </fieldset>
+        </form>
+    </div>
+
+
+{% endblock content %}

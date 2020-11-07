@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="subpage">
+    <h1>DOOR CODES:</h1>
+    <table class="table table-striped table-dark">
+                    <tr id="code-t-head">
+                        <th>PLACE</th>
+                        <th>CODE</th>
+                    </tr>
+    {%for key, value in door_codes.items()%}
+        <tr>
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+
+
+</div>
+
+{% endblock content %}

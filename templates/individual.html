@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+ <div class="subpage">
+    <h1>INDIVIDUAL ROTA</h1>
+     <form action={{url_for('printrota', rotamonth=rotamonth, pickname=pickname)}}>
+         <label>Choose a name:</label>
+         <select name="pickname" id="pickname">
+         {%for driver in drivers%}
+           <option value={{driver.first}}>{{driver.first}}</option>
+         {%endfor%}
+         </select>
+         <input type="submit" value="Pick a name">
+     </form>
+ </div>
+{% endblock content %}

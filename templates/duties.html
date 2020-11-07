@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="subpage">
+    <h1>DUTY TIMESPAN AND CARDS</h1>
+    <div class="table-responsive">
+        <h2>Monday - Thursday:</h2>
+    <table class="table table-striped table-dark">
+        <tr id="code-duty-head">
+        <th>Duty</th>
+            <th>Route</th>
+        <th>Timespan</th>
+        <th>Duty Card</th>
+        </tr>
+
+        {% for i in range(0, 11) %}
+        <tr>
+            <td><h5><b>{{ mon_thu[i][0] }} </b></h5></td>
+            <td> {{ mon_thu[i][1] }}</td>
+            <td> {{ mon_thu[i][2] }}</td>
+            <td><a href= {{ mon_thu[i][3] }}>see duty card</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+<div class="table-responsive">
+        <h2>Friday:</h2>
+         <table class="table table-striped table-dark">
+        <tr id="code-duty-head">
+        <th>Duty</th>
+            <th>Route</th>
+        <th>Timespan</th>
+        <th>Duty Card</th>
+        </tr>
+
+         {% for i in range(0, 15) %}
+        <tr>
+            <td><h5><b>{{ friday[i][0] }} </b></h5></td>
+            <td> {{ friday[i][1] }}</td>
+            <td> {{ friday[i][2] }}</td>
+            <td><a href= {{ friday[i][3] }}>see duty card</a></td>
+        </tr>
+        {% endfor %}
+         </table >
+</div>
+    <div class="table-responsive">
+        <h2>Saturday:</h2>
+             <table class="table table-striped table-dark">
+        <tr id="code-duty-head">
+        <th>Duty</th>
+            <th>Route</th>
+        <th>Timespan</th>
+        <th>Duty Card</th>
+        </tr>
+
+         {% for i in range(0, 15) %}
+        <tr>
+            <td><h5><b>{{ saturday[i][0] }} </b></h5></td>
+            <td> {{ saturday[i][1] }}</td>
+            <td> {{ saturday[i][2] }}</td>
+            <td><a href= {{ saturday[i][3] }}>see duty card</a></td>
+        </tr>
+        {% endfor %}
+             </table>
+    </div>
+    <div class="table-responsive">
+        <h2>Sunday:</h2>
+    <table class="table table-striped table-dark">
+        <tr id="code-duty-head">
+        <th>Duty</th>
+            <th>Route</th>
+        <th>Timespan</th>
+        <th>Duty Card</th>
+        </tr>
+
+         {% for i in range(0, 11) %}
+        <tr>
+            <td><h5><b>{{ sunday[i][0] }} </b></h5></td>
+            <td> {{ sunday[i][1] }}</td>
+            <td> {{ sunday[i][2] }}</td>
+            <td><a href= {{ sunday[i][3] }}>see duty card</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

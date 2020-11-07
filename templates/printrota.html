@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="subpage">
+<h1>{{chosen_driver.first}}'s rota for <br> {{dispmonth}}</h1>
+    <a href="{{url_for('printrota', rotamonth=backward)}}?pickname={{pickname}}">Previous month</a>
+    <a href="{{url_for('printrota', rotamonth=fwd)}}?pickname={{pickname}}">Next month</a><br><br>
+    <a href="{{url_for('printrota', rotamonth=today)}}?pickname={{pickname}}">Back to current month</a>
+<table class="table table-bordered table-dark">
+    <tr id="code-rota-head">
+        <th>DATE</th>
+        <th>DAY</th>
+        <th>DUTY</th>
+        <th>TIME SPAN</th>
+    </tr>
+{%for item in chosen_driver.clnd(rotamonth, period='M')%}
+    <tr>
+        <td>{{item.start_time.date()}}</td>
+        <td>{{item.start_time.strftime('%A')}}</td>
+        {% if item.label == 0 %}
+        <td>{{ 'OFF DUTY' }}</td>
+        {% elif item.label == 1 %}
+        <td>{{ 'to be found' }}</td>
+        {% else %}
+        <td>{{item.label}}</td>
+        {% endif %}
+        {% if item.start_time.weekday() in range(0,4)%}
+            <td>{{ mon_thu_times[(chosen_driver.clnd(item.start_time.date()).label)] }}</td>
+            {% elif item.start_time.weekday() == 4%}
+            <td>{{ fri_times[(chosen_driver.clnd(item.start_time.date()).label)] }}</td>
+            {% elif item.start_time.weekday() == 5 %}
+            <td>{{ sat_times[(chosen_driver.clnd(item.start_time.date()).label)] }}</td>
+            {% elif item.start_time.weekday() == 6 %}
+            <td>{{ sun_times[(chosen_driver.clnd(item.start_time.date()).label)] }}</td>
+        {% endif %}
+    </tr>
+{%endfor%}
+</table>
+</div>
+{% endblock content %}
+
