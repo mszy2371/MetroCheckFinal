@@ -28,8 +28,7 @@
                         {% else %}
                         <td>{{ driver.clnd(checkerdate).label }}</td>
                         {% endif %}
-                        {% if weekday == 'Monday' or weekday == 'Tuesday'
-                        or weekday == 'Wednesday' or weekday == 'Thursday' %}
+                        {% if weekday in ('Monday', 'Tuesday', 'Wednesday', 'Thursday') %}
                         <td>{{ mon_thu_times[(driver.clnd(checkerdate).label)] }}</td>
                         {% elif weekday == 'Friday' %}
                         <td>{{ fri_times[(driver.clnd(checkerdate).label)] }}</td>
